@@ -4,28 +4,41 @@
  */
 package com.mycompany.jogodetabuleiro;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Wemerson
  */
-public class Play {
+public final class Play {
     escolhePersonagens escolhaDoPersonagem = new escolhePersonagens();
-    escolheModoDeJogo modoDeJogo = new escolheModoDeJogo();
+    public int modoDeJogo;
     private final int escolhaDePersonagem;
-    private final int modo;
     private final String nomeDoPersonagem;
     private enum Status {CONTINUE, LOSE, WIN}; 
     Status gameStatus = Status.CONTINUE;
     public Play(){
         escolhaDePersonagem = escolhaDoPersonagem.escolhaDoPersonagem();
         nomeDoPersonagem = escolhaDoPersonagem.defineNome();
-        modo = modoDeJogo.escolheModo();
         escolhaDoPersonagem.imprimeEscolha(nomeDoPersonagem, escolhaDePersonagem);
-        Tabuleiro mesa = new Tabuleiro();
+        escolheModo();
+        Tabuleiro mesa = new Tabuleiro(); 
+        
     }
-    public void game(){
-        while(gameStatus == CONTINUE){
-            
+    public void escolheModo(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Deseja jogar PVP (0) ou PVE? (1)");
+        modoDeJogo = input.nextInt();
+        if(modoDeJogo == 0){
+            System.out.println("O modo de jogo escolhido foi PVP! ");
+        }
+        else{
+            if(modoDeJogo == 1){
+                System.out.println("O modo de jogo escolhido foi PVE! ");
+            }
+            else{
+                System.out.println("Escolha inválida! ");
+            }
         }
     }
 }
