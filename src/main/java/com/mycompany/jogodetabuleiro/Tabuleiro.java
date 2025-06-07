@@ -17,6 +17,12 @@ public class Tabuleiro {
     int posicaoLinha2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
     int posicaoColuna2 = posicaoColuna1 + numeroAleatorio.nextInt(4);
     public Tabuleiro(){
+        while(posicaoLinha2 > 10){
+            posicaoLinha2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
+        }
+        while(posicaoLinha1 > 10){
+            posicaoColuna2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
+        }
         String[][] Tabuleiro2D = new String[10][10];
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){

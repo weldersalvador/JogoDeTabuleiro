@@ -21,7 +21,7 @@ public class Mago {
     public void setVida(int vida){
         this.vida = vida;
     }
-    public voi setDefesa(int defesa){
+    public void setDefesa(int defesa){
         this.defesa = defesa;
     }
 }
