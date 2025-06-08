@@ -4,6 +4,7 @@
  */
 package com.mycompany.jogodetabuleiro;
 
+import com.mycompany.jogodetabuleiro.Tabuleiro;
 import java.util.Scanner;
 
 /**
@@ -17,18 +18,16 @@ public final class Play {
     private final String nomeDoPersonagem;
     private enum Status {CONTINUE, LOSE, WIN}; 
     Status gameStatus = Status.CONTINUE;
+    public Tabuleiro mesa;
     public Play(){
         escolhaDePersonagem = escolhaDoPersonagem.escolhaDoPersonagem();
         nomeDoPersonagem = escolhaDoPersonagem.defineNome();
         escolhaDoPersonagem.imprimeEscolha(nomeDoPersonagem, escolhaDePersonagem);
-        escolheModo();
-        Tabuleiro mesa = new Tabuleiro(); 
-        
+        int modo = escolheModo();
+        mesa = new Tabuleiro();
     }
-<<<<<<< HEAD
     private int escolha;
     public int escolheModo(){
-        
         Scanner input = new Scanner(System.in);
         System.out.println("Deseja jogar PVP (0) ou PVE? (1)");
         escolha = input.nextInt();
@@ -44,22 +43,18 @@ public final class Play {
             else{
                 System.out.println("Escolha inválida! ");
                 return -1;
-=======
-    public void escolheModo(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Deseja jogar PVP (0) ou PVE? (1)");
-        modoDeJogo = input.nextInt();
-        if(modoDeJogo == 0){
-            System.out.println("O modo de jogo escolhido foi PVP! ");
-        }
-        else{
-            if(modoDeJogo == 1){
-                System.out.println("O modo de jogo escolhido foi PVE! ");
             }
-            else{
-                System.out.println("Escolha inválida! ");
->>>>>>> 3233b0d0c9f10e4f31afa2e38b27e9d10465b755
-            }
+        }   
+    }
+    Scanner input = new Scanner(System.in);
+    public void iniciaGame(){
+        int decisao;
+        System.out.println("");
+        decisao = input.nextInt();
+        if(modoDeJogo == 1){
+            Bot bot = new Bot();
+            System.out.println("Seu turno, escolha o que fazer!");
+            System.out.println("1 (andar), 2 (atacar), 3");
         }
     }
-}
+}    

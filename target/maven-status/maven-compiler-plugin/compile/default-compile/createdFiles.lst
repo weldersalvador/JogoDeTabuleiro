@@ -1,11 +1,9 @@
 com\mycompany\jogodetabuleiro\Play.class
+com\mycompany\jogodetabuleiro\Guerreiro.class
 com\mycompany\jogodetabuleiro\JogoDeTabuleiro.class
 com\mycompany\jogodetabuleiro\Play$Status.class
-<<<<<<< HEAD
-com\mycompany\jogodetabuleiro\Tabuleiro.class
-=======
 com\mycompany\jogodetabuleiro\Mago.class
->>>>>>> 3233b0d0c9f10e4f31afa2e38b27e9d10465b755
+com\mycompany\jogodetabuleiro\Arqueiro.class
 com\mycompany\jogodetabuleiro\escolhePersonagens.class
 com\mycompany\jogodetabuleiro\escolheModoDeJogo.class
 com\mycompany\jogodetabuleiro\Tabuleiro.class

@@ -6,29 +6,29 @@ package com.mycompany.jogodetabuleiro;
 
 /**
  *
- * @author Welder
+ * @author Wemerson
  */
-public class Mago {
+public class Guerreiro {
     private int vida = 100;
-    private int defesa = 7;
-    private int ataque = 10;
-    private int alcance = 3;
+    private int forcaDeDefesa = 15;
+    private int forcaDeAtaque  = 8;
+    private int alcanceDeAtaque = 1;
     public int getVida(){
         return vida;
     }
     public int getDefesa(){
-        return this.defesa;
+        return forcaDeDefesa;
     }
     public void setVida(int vida){
         this.vida = vida;
     }
     public void setDefesa(int defesa){
-        this.defesa = defesa;
+        forcaDeDefesa = defesa;
     }
     public int getAlcance(){
-        return alcance;
+        return alcanceDeAtaque;
     }
     public int getAtaque(){
-        return ataque;
+        return forcaDeAtaque;
     }
 }

@@ -17,14 +17,14 @@ public class Tabuleiro {
     int posicaoColuna1 = numeroAleatorio.nextInt(10);
     int posicaoLinha2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
     int posicaoColuna2 = posicaoColuna1 + numeroAleatorio.nextInt(4);
+    public String[][] Tabuleiro2D = new String[10][10];
     public Tabuleiro(){
-        while(posicaoLinha2 > 10){
+        while(posicaoLinha2 >= 10){
             posicaoLinha2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
         }
-        while(posicaoLinha1 > 10){
+        while(posicaoLinha1 >= 10){
             posicaoColuna2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
         }
-        String[][] Tabuleiro2D = new String[10][10];
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 Tabuleiro2D[i][j] = "*";
@@ -32,6 +32,36 @@ public class Tabuleiro {
         }
         Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
         Tabuleiro2D[posicaoLinha2][posicaoColuna2] = "p2";
+        for(int i = 0; i < 10; i++){
+            System.out.println("");
+            for(int j = 0; j < 10; j++){
+                System.out.print(Tabuleiro2D[i][j] + " ");
+            }
+        }
+    }
+    public void andar(String direcao){
+        if(direcao == "Cima" || direcao == "cima"){
+            posicaoLinha1--;
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
+            Tabuleiro2D[posicaoLinha1 + 1][posicaoColuna1] = "*";
+            Imprime();
+        }
+        else if(direcao == "direita" || direcao == "Direita"){
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = Tabuleiro2D[posicaoLinha1][posicaoColuna1 + 1];
+            Imprime();
+        }
+        else if (direcao == "baixo" || direcao == "Baixo"){
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = Tabuleiro2D[posicaoLinha1 - 1][posicaoColuna1];
+            Imprime();
+        }
+        else{
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = Tabuleiro2D[posicaoLinha1][posicaoColuna1 - 1];
+            Imprime();
+        }
+    }
+    public void Imprime(){
+        System.out.println("");
+        System.out.println("");
         for(int i = 0; i < 10; i++){
             System.out.println("");
             for(int j = 0; j < 10; j++){
