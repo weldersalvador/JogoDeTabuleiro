@@ -19,11 +19,17 @@ public class Tabuleiro {
     int posicaoColuna2 = posicaoColuna1 + numeroAleatorio.nextInt(4);
     public String[][] Tabuleiro2D = new String[10][10];
     public Tabuleiro(){
-        while(posicaoLinha2 >= 10){
-            posicaoLinha2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
+        while(posicaoLinha2 > 9){
+            posicaoLinha2 = posicaoLinha2 + numeroAleatorio.nextInt(4);
         }
-        while(posicaoLinha1 >= 10){
-            posicaoColuna2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
+        while(posicaoLinha1 > 9){
+            posicaoLinha1 = posicaoLinha1 + numeroAleatorio.nextInt(4);
+        }
+        while(posicaoColuna1 > 9){
+            posicaoColuna1 = posicaoColuna1 + numeroAleatorio.nextInt(4);
+        }
+        while(posicaoColuna2 > 9){
+            posicaoColuna2 = posicaoColuna2 + numeroAleatorio.nextInt(4);
         }
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
@@ -40,22 +46,28 @@ public class Tabuleiro {
         }
     }
     public void andar(String direcao){
-        if(direcao == "Cima" || direcao == "cima"){
+        if(direcao == "C" || direcao == "c"){
             posicaoLinha1--;
             Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
             Tabuleiro2D[posicaoLinha1 + 1][posicaoColuna1] = "*";
             Imprime();
         }
-        else if(direcao == "direita" || direcao == "Direita"){
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = Tabuleiro2D[posicaoLinha1][posicaoColuna1 + 1];
+        else if(direcao == "d" || direcao == "D"){
+            posicaoColuna1++;
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1 - 1] = "*";
             Imprime();
         }
-        else if (direcao == "baixo" || direcao == "Baixo"){
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = Tabuleiro2D[posicaoLinha1 - 1][posicaoColuna1];
+        else if (direcao == "B" || direcao == "b"){
+            posicaoLinha1++;
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
+            Tabuleiro2D[posicaoLinha1 - 1][posicaoColuna1] = "*";
             Imprime();
         }
-        else{
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = Tabuleiro2D[posicaoLinha1][posicaoColuna1 - 1];
+        else if (direcao == "E" || direcao == "e"){
+            posicaoLinha1--;
+            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
+            Tabuleiro2D[posicaoLinha1 + 1][posicaoColuna1] = "*";
             Imprime();
         }
     }
@@ -67,6 +79,35 @@ public class Tabuleiro {
             for(int j = 0; j < 10; j++){
                 System.out.print(Tabuleiro2D[i][j] + " ");
             }
+        }
+    }
+    public boolean valida(String andar){
+        if(andar == "C" || andar == "c"){
+            if(posicaoLinha1 == 0){
+                return false;
+            }
+            return true;
+        }
+        else if(andar == "d" || andar == "D"){
+            if(posicaoColuna1 == 10){
+                return false;
+            }
+            return true;
+        }
+        else if (andar == "B" || andar == "b"){
+            if(posicaoLinha1 == 10){
+                return false;
+            }
+            return true;
+        }
+        else if (andar == "E" || andar == "e"){
+            if(posicaoColuna1 == 0){
+                return false;
+            }
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }

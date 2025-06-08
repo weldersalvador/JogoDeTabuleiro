@@ -28,21 +28,21 @@ public class escolhePersonagens {
         escolha = classe;
         switch(escolha){
             case 1:
-                System.out.println("Mago " + nome + "");
+                System.out.println("Mago(a) " + nome + "");
                 System.out.println("Pontos de vida: 100");
                 System.out.println("Pontos de defesa: 4");
                 System.out.println("Ataque: 8");
                 System.out.println("Alcance: 4");
                 break;
             case 2:
-                System.out.println("Guerreiro " + nome + "");
+                System.out.println("Guerreiro(a) " + nome + "");
                 System.out.println("Pontos de vida: 100");
                 System.out.println("Pontos de defesa: 10");
                 System.out.println("Ataque: 30");
                 System.out.println("Alcance: 1");
                 break;
             case 3:
-                System.out.println("Arqueiro " + nome + "");
+                System.out.println("Arqueiro(a) " + nome + "");
                 System.out.println("Pontos de vida: 100");
                 System.out.println("Pontos de defesa: 4");
                 System.out.println("Ataque: 10");

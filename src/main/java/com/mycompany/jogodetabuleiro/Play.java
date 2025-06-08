@@ -13,17 +13,17 @@ import java.util.Scanner;
  */
 public final class Play {
     escolhePersonagens escolhaDoPersonagem = new escolhePersonagens();
-    public int modoDeJogo;
     private final int escolhaDePersonagem;
     private final String nomeDoPersonagem;
     private enum Status {CONTINUE, LOSE, WIN}; 
     Status gameStatus = Status.CONTINUE;
     public Tabuleiro mesa;
+    public int modo;
     public Play(){
         escolhaDePersonagem = escolhaDoPersonagem.escolhaDoPersonagem();
         nomeDoPersonagem = escolhaDoPersonagem.defineNome();
         escolhaDoPersonagem.imprimeEscolha(nomeDoPersonagem, escolhaDePersonagem);
-        int modo = escolheModo();
+        modo = escolheModo();
         mesa = new Tabuleiro();
     }
     private int escolha;
@@ -46,15 +46,29 @@ public final class Play {
             }
         }   
     }
-    Scanner input = new Scanner(System.in);
+    Scanner input1 = new Scanner(System.in);
+    Scanner input2 = new Scanner(System.in);
     public void iniciaGame(){
         int decisao;
         System.out.println("");
-        decisao = input.nextInt();
-        if(modoDeJogo == 1){
+        if(modo == 1){
             Bot bot = new Bot();
-            System.out.println("Seu turno, escolha o que fazer!");
-            System.out.println("1 (andar), 2 (atacar), 3");
+            while(gameStatus == Status.CONTINUE){
+                System.out.println("Seu turno, escolha o que fazer!");
+                System.out.println("1 (andar), 2 (atacar), 3 (habilidade especial)");
+                decisao = input1.nextInt();
+                if(decisao == 1){
+                    String andar;
+                    System.out.println("Escolha: C (cima), B(baixo), E(esquerda), D(direita)");
+                    andar = input2.nextLine();
+                    mesa.valida(andar);
+                    while(mesa.valida(andar) == true){
+                        System.out.println("Opcao invalida! Escolha novamente");
+                        andar = input2.nextLine();
+                    }
+                    mesa.andar(andar);
+                }
+            }
         }
     }
 }    

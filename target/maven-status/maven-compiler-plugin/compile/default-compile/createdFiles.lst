@@ -2,6 +2,7 @@ com\mycompany\jogodetabuleiro\Play.class
 com\mycompany\jogodetabuleiro\Guerreiro.class
 com\mycompany\jogodetabuleiro\JogoDeTabuleiro.class
 com\mycompany\jogodetabuleiro\Play$Status.class
+com\mycompany\jogodetabuleiro\Bot.class
 com\mycompany\jogodetabuleiro\Mago.class
 com\mycompany\jogodetabuleiro\Arqueiro.class
 com\mycompany\jogodetabuleiro\escolhePersonagens.class
