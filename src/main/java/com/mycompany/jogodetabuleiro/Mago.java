@@ -8,27 +8,22 @@ package com.mycompany.jogodetabuleiro;
  *
  * @author Welder
  */
-public class Mago {
-    private int vida = 100;
-    private int defesa = 7;
-    private int ataque = 10;
-    private int alcance = 3;
-    public int getVida(){
-        return vida;
+public class Mago extends Personagem{
+    Mago(){
+        super(7, 10, 3);
     }
-    public int getDefesa(){
-        return this.defesa;
+    
+    public boolean ativarPoderEspecial(Personagem inimigo){
+        if(mana == 100){
+            setMana(0);
+            inimigo.setVida(this.vida);
+            this.setVida(inimigo.getVida());
+            return true;
+        }
+        else{
+            System.out.println("Mana insuficiente! Não é possível ativar a poder especial.");
+            return false;
+        }
     }
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-    public void setDefesa(int defesa){
-        this.defesa = defesa;
-    }
-    public int getAlcance(){
-        return alcance;
-    }
-    public int getAtaque(){
-        return ataque;
-    }
+    
 }

@@ -8,27 +8,20 @@ package com.mycompany.jogodetabuleiro;
  *
  * @author Wemerson
  */
-public class Arqueiro {
-    private int vida = 100;
-    private int forcaDeDefesa = 5;
-    private int forcaDeAtaque  = 8;
-    private int alcanceDeAtaque = 5;
-    public int getVida(){
-        return vida;
+public class Arqueiro extends Personagem{    
+    Arqueiro(){        
+        super(5,8,5);
     }
-    public int getDefesa(){
-        return forcaDeDefesa;
-    }
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-    public void setDefesa(int defesa){
-        forcaDeDefesa = defesa;
-    }
-    public int getAlcance(){
-        return alcanceDeAtaque;
-    }
-    public int getAtaque(){
-        return forcaDeAtaque;
+    
+    public boolean ativarPoderEspecial(){
+        if(mana == 100){
+            setMana(0);
+            this.alcanceDeAtaque++;
+            return true;
+        }
+        else{
+            System.out.println("Mana insuficiente! Não é possível ativar a poder especial.");
+            return false;
+        }
     }
 }
