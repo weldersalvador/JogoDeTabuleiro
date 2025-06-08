@@ -4,7 +4,12 @@
  */
 package com.mycompany.jogodetabuleiro;
 
-import java.util.Random;
+//import java.util.Random;
+
+import br.edu.ufjf.personagem.Arqueiro;
+import br.edu.ufjf.personagem.Mago;
+import br.edu.ufjf.personagem.Guerreiro;
+import br.edu.ufjf.personagem.Personagem;
 
 /**
  *
@@ -12,20 +17,24 @@ import java.util.Random;
  */
 public class Bot {
     public int escolhaDePersonagem;
-    int vida = 100;
-    int defesa = 10;
-    Mago magoBot = new Mago();
-    Guerreiro guerreiroBot = new Guerreiro();
-    Arqueiro arqueiroBot = new Arqueiro();
+    int defesa = 10;//(??) Por que 10?
+    protected Personagem personagem;
+    
     public int atacar(){
-        if(escolhaDePersonagem == 1){
-            return magoBot.getAtaque();
-        }
-        else if (escolhaDePersonagem == 2){
-            return guerreiroBot.getAtaque();
-        }
-        else{
-            return arqueiroBot.getAtaque();
+        //Este é o rule switch. Ele tem uma diferença sutil do regular switch.
+        switch (escolhaDePersonagem) {
+            case 1 -> {
+                personagem = new Mago();
+                return personagem.getForcaDeAtaque();
+            }
+            case 2 -> {
+                personagem = new Guerreiro();
+                return personagem.getForcaDeAtaque();
+            }
+            default -> {
+                personagem = new Arqueiro();
+                return personagem.getForcaDeAtaque();
+            }
         }
     }
 }

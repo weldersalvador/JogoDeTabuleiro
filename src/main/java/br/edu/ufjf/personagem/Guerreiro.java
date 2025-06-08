@@ -2,21 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.jogodetabuleiro;
+package br.edu.ufjf.personagem;
 
 /**
  *
  * @author Wemerson
  */
-public class Arqueiro extends Personagem{    
-    Arqueiro(){        
-        super(5,8,5);
+public class Guerreiro extends Personagem {    
+    public Guerreiro(){
+        super(8, 15, 1);
     }
-    
-    public boolean ativarPoderEspecial(){
+
+    public boolean ativarPoderEspecial() {
         if(mana == 100){
             setMana(0);
-            this.alcanceDeAtaque++;
+            this.forcaDeAtaque *= 2;
             return true;
         }
         else{
@@ -24,4 +24,5 @@ public class Arqueiro extends Personagem{
             return false;
         }
     }
+    
 }

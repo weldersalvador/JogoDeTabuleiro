@@ -1,9 +1,1 @@
-com\mycompany\jogodetabuleiro\Play.class
-com\mycompany\jogodetabuleiro\Guerreiro.class
-com\mycompany\jogodetabuleiro\JogoDeTabuleiro.class
-com\mycompany\jogodetabuleiro\Play$Status.class
-com\mycompany\jogodetabuleiro\Mago.class
-com\mycompany\jogodetabuleiro\Arqueiro.class
-com\mycompany\jogodetabuleiro\escolhePersonagens.class
-com\mycompany\jogodetabuleiro\escolheModoDeJogo.class
-com\mycompany\jogodetabuleiro\Tabuleiro.class
+com/mycompany/jogodetabuleiro/Personagem.class

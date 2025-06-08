@@ -1,20 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.jogodetabuleiro;
+package br.edu.ufjf.personagem;
+
+import com.mycompany.jogodetabuleiro.Posicao;
 
 /**
  *
- * @author assuncao-v
+ * @author Vitor
  */
+
 public abstract class Personagem {
     protected int vida;
     protected int forcaDeAtaque;
     protected int forcaDeDefesa;
     protected int alcanceDeAtaque;
     protected int mana;
-    
+    protected Posicao posicao;
     
     Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque){
         this.vida = 100;
@@ -22,13 +21,14 @@ public abstract class Personagem {
         this.forcaDeAtaque = forcaDeAtaque;
         this.forcaDeDefesa = forcaDeDefesa;
         this.alcanceDeAtaque = alcanceDeAtaque;
+        
     }
     
     //Gets
     public int getVida(){
         return this.vida;
     }
-    public int getForcaAtaque(){
+    public int getForcaDeAtaque(){
         return this.forcaDeAtaque;
     }
     public int getForcaDeDefesa(){
