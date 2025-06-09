@@ -30,23 +30,23 @@ public class escolhePersonagens {
             case 1:
                 System.out.println("Mago(a) " + nome + "");
                 System.out.println("Pontos de vida: 100");
-                System.out.println("Pontos de defesa: 4");
-                System.out.println("Ataque: 8");
-                System.out.println("Alcance: 4");
+                System.out.println("Pontos de defesa: 7");
+                System.out.println("Ataque: 10");
+                System.out.println("Alcance: 3");
                 break;
             case 2:
                 System.out.println("Guerreiro(a) " + nome + "");
                 System.out.println("Pontos de vida: 100");
                 System.out.println("Pontos de defesa: 10");
-                System.out.println("Ataque: 30");
+                System.out.println("Ataque: 15");
                 System.out.println("Alcance: 1");
                 break;
             case 3:
                 System.out.println("Arqueiro(a) " + nome + "");
                 System.out.println("Pontos de vida: 100");
-                System.out.println("Pontos de defesa: 4");
+                System.out.println("Pontos de defesa: 5");
                 System.out.println("Ataque: 10");
-                System.out.println("Alcance: 6");
+                System.out.println("Alcance: 5");
                 break;
         }
     }

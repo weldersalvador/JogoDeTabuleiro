@@ -14,62 +14,23 @@ public class Tabuleiro {
     int posicaoLinha2 = posicaoLinha1 + numeroAleatorio.nextInt(4);
     int posicaoColuna2 = posicaoColuna1 + numeroAleatorio.nextInt(4);
     public String[][] Tabuleiro2D = new String[10][10];
-    public Tabuleiro(){
-        while(posicaoLinha2 > 9){
-            posicaoLinha2 = posicaoLinha2 + numeroAleatorio.nextInt(4);
-        }
-        while(posicaoLinha1 > 9){
-            posicaoLinha1 = posicaoLinha1 + numeroAleatorio.nextInt(4);
-        }
-        while(posicaoColuna1 > 9){
-            posicaoColuna1 = posicaoColuna1 + numeroAleatorio.nextInt(4);
-        }
-        while(posicaoColuna2 > 9){
-            posicaoColuna2 = posicaoColuna2 + numeroAleatorio.nextInt(4);
-        }
+    public Tabuleiro(Posicao posicao1, Posicao posicao2){
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 Tabuleiro2D[i][j] = "*";
             }
         }
-        Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
-        Tabuleiro2D[posicaoLinha2][posicaoColuna2] = "p2";
+        Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
+        Tabuleiro2D[posicao2.x][posicao2.y] = "p2";
         for(int i = 0; i < 10; i++){
             System.out.println("");
             for(int j = 0; j < 10; j++){
                 System.out.print(Tabuleiro2D[i][j] + " ");
             }
-        }
-    }
-    public void andar(String direcao){
-        if(direcao == "C" || direcao == "c"){
-            posicaoLinha1--;
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
-            Tabuleiro2D[posicaoLinha1 + 1][posicaoColuna1] = "*";
-            Imprime();
-        }
-        else if(direcao == "d" || direcao == "D"){
-            posicaoColuna1++;
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1 - 1] = "*";
-            Imprime();
-        }
-        else if (direcao == "B" || direcao == "b"){
-            posicaoLinha1++;
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
-            Tabuleiro2D[posicaoLinha1 - 1][posicaoColuna1] = "*";
-            Imprime();
-        }
-        else if (direcao == "E" || direcao == "e"){
-            posicaoLinha1--;
-            Tabuleiro2D[posicaoLinha1][posicaoColuna1] = "p1";
-            Tabuleiro2D[posicaoLinha1 + 1][posicaoColuna1] = "*";
-            Imprime();
         }
     }
     public void Imprime(){
         System.out.println("");
-        System.out.println("");
         for(int i = 0; i < 10; i++){
             System.out.println("");
             for(int j = 0; j < 10; j++){
@@ -77,33 +38,70 @@ public class Tabuleiro {
             }
         }
     }
-    public boolean valida(String andar){
-        if(andar == "C" || andar == "c"){
-            if(posicaoLinha1 == 0){
-                return false;
+    public void andar(String andar,Posicao posicao){
+        if("C".equals(andar) && Tabuleiro2D[posicao.x - 1][posicao.y] != "p2"){
+            if(posicao.x == 0){
+                System.out.println("Voce esta na borda! Passando turno...");
             }
-            return true;
-        }
-        else if(andar == "d" || andar == "D"){
-            if(posicaoColuna1 == 10){
-                return false;
+            else if(Tabuleiro2D[posicao.x - 1][posicao.y] == "p2"){
+                System.out.println("Comando invalido! Passando turno...");
             }
-            return true;
-        }
-        else if (andar == "B" || andar == "b"){
-            if(posicaoLinha1 == 10){
-                return false;
+            else{
+                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                posicao.x = posicao.x - 1;
+                Tabuleiro2D[posicao.x][posicao.y] = "p1";
+                Imprime();
+                System.out.println("");
+                System.out.println("Voce andou uma casa para cima! ");
             }
-            return true;
         }
-        else if (andar == "E" || andar == "e"){
-            if(posicaoColuna1 == 0){
-                return false;
+        if("B".equals(andar)){
+            if(posicao.x == 9){
+                System.out.println("Voce esta na borda! Passando turno...");
             }
-            return true;
+            else if(Tabuleiro2D[posicao.x + 1][posicao.y] == "p2"){
+                System.out.println("Comando invalido! Passando turno...");
+            }
+            else{
+                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                posicao.x = posicao.x + 1;
+                Tabuleiro2D[posicao.x][posicao.y] = "p1";
+                Imprime();
+                System.out.println("");
+                System.out.println("Voce andou uma casa para baixo! ");
+            }
         }
-        else{
-            return false;
+        if("D".equals(andar)){
+            if(posicao.x == 9){
+                System.out.println("Voce esta na borda! Passando turno...");
+            }
+            else if(Tabuleiro2D[posicao.x][posicao.y + 1] == "p2"){
+                System.out.println("Comando invalido! Passando turno...");
+            }
+            else{
+                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                posicao.y = posicao.y + 1;
+                Tabuleiro2D[posicao.x][posicao.y] = "p1";
+                Imprime();
+                System.out.println("");
+                System.out.println("Voce andou uma casa para direita! ");
+            }
+        }
+        if("E".equals(andar)){
+            if(posicao.x == 0){
+                System.out.println("Voce esta na borda! Passando turno...");
+            }
+            else if(Tabuleiro2D[posicao.x][posicao.y - 1] == "p2"){
+                System.out.println("Comando invalido! Passando turno...");
+            }
+            else{
+                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                posicao.y = posicao.y - 1;
+                Tabuleiro2D[posicao.x][posicao.y] = "p1";
+                Imprime();
+                System.out.println("");
+                System.out.println("Voce andou uma casa para esquerda! ");
+            }
         }
     }
 }

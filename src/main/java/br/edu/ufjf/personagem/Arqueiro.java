@@ -4,13 +4,16 @@
  */
 package br.edu.ufjf.personagem;
 
+import com.mycompany.jogodetabuleiro.Posicao;
+
 /**
  *
  * @author Wemerson
  */
-public class Arqueiro extends Personagem{    
+public class Arqueiro extends Personagem{
+    public Posicao posicao = new Posicao();
     public Arqueiro(){        
-        super(5,8,5);
+        super(8,5,5);
     }
     
     public boolean ativarPoderEspecial(){

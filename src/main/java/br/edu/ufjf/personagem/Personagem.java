@@ -13,7 +13,7 @@ public abstract class Personagem {
     protected int forcaDeDefesa;
     protected int alcanceDeAtaque;
     protected int mana;
-    protected Posicao posicao;
+    protected Posicao posicao = new Posicao();
     
     Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque){
         this.vida = 100;
@@ -40,6 +40,9 @@ public abstract class Personagem {
     public int getMana(){
         return this.mana;
     }
+    public Posicao getPosicao(){
+        return this.posicao;
+    } 
     //Sets
     public void setVida(int vida){
         this.vida = vida;
@@ -49,6 +52,10 @@ public abstract class Personagem {
     }
     public void setMana(int mana){
         this.mana = mana;
+    }
+    public void setPosicao(Posicao posicao){
+        this.posicao.x = posicao.x;
+        this.posicao.y = posicao.y;
     }
     
     //Auxiliares

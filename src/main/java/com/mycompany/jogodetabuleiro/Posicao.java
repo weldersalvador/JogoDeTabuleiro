@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Vitor
  */
 public class Posicao {
-    protected int x, y;
+    public int x, y;
     
     public Posicao(){
         Random numeroAleatorio = new Random();
