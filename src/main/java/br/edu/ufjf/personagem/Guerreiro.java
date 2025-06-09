@@ -13,7 +13,7 @@ import com.mycompany.jogodetabuleiro.Posicao;
 public class Guerreiro extends Personagem {
     public Posicao posicao = new Posicao();    
     public Guerreiro(){
-        super(15, 10, 1);
+        super(15, 10, 1,"Guerreiro");
     }
 
     public void ativarPoderEspecial() {

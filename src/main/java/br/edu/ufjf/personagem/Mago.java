@@ -13,7 +13,7 @@ import com.mycompany.jogodetabuleiro.Posicao;
 public class Mago extends Personagem{
     public Posicao posicao = new Posicao();
     public Mago(){
-        super(10, 7, 3);
+        super(10, 7, 3,"Mago");
     }
     
     public boolean ativarPoderEspecial(Personagem inimigo){

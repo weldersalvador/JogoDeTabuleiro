@@ -13,14 +13,16 @@ public abstract class Personagem {
     protected int forcaDeDefesa;
     protected int alcanceDeAtaque;
     protected int mana;
+    protected String classe;
     protected Posicao posicao = new Posicao();
     
-    Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque){
+    Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque,String classe){
         this.vida = 100;
         this.mana = 0;
         this.forcaDeAtaque = forcaDeAtaque;
         this.forcaDeDefesa = forcaDeDefesa;
         this.alcanceDeAtaque = alcanceDeAtaque;
+        this.classe = classe;
         
     }
     
@@ -39,6 +41,10 @@ public abstract class Personagem {
     }
     public int getMana(){
         return this.mana;
+    }
+    public void getClasse(){
+        System.out.println("");
+        System.out.println("Voce esta jogando contra um " + classe + "!");
     }
     public Posicao getPosicao(){
         return this.posicao;

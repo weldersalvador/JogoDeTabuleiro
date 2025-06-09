@@ -13,7 +13,7 @@ import com.mycompany.jogodetabuleiro.Posicao;
 public class Arqueiro extends Personagem{
     public Posicao posicao = new Posicao();
     public Arqueiro(){        
-        super(8,5,5);
+        super(8,5,5,"Arqueiro");
     }
     
     public boolean ativarPoderEspecial(){
