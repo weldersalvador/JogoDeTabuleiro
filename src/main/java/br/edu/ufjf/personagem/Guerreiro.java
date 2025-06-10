@@ -9,17 +9,20 @@ import com.mycompany.jogodetabuleiro.Posicao;
 
 public class Guerreiro extends Personagem {
     public Posicao posicao = new Posicao();    
-    public Guerreiro(){
-        super(15, 10, 1,"Guerreiro");
+    public Guerreiro(String nome){
+        super(15, 10, 1,"Guerreiro", nome);
     }
 
-    public void ativarPoderEspecial() {
-        if(mana == 100){
+    @Override
+    public boolean ativarPoderEspecial(Personagem inimigo) {
+        if(getMana() == 100){
             setMana(0);
-            this.forcaDeAtaque *= 2;
+            setForcaDeAtaque(getForcaDeAtaque()*2);
+            return true;
         }
         else{
             System.out.println("Mana insuficiente! Não é possível ativar a poder especial.");
+            return false;
         }
     }
     

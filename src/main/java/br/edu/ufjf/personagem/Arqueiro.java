@@ -7,13 +7,14 @@ import com.mycompany.jogodetabuleiro.Posicao;
  * @author Wemerson
  */
 public class Arqueiro extends Personagem{
-    public Posicao posicao = new Posicao();
-    public Arqueiro(){        
-        super(8,5,5,"Arqueiro");
+    
+    public Arqueiro(String nome){        
+        super(8,5,5,"Arqueiro", nome);
         
     }
     
-    public boolean ativarPoderEspecial(){
+    @Override
+    public boolean ativarPoderEspecial(Personagem inimigo){
         if(getMana() == 100){
             setMana(0);
             setMana(getMana()+1);

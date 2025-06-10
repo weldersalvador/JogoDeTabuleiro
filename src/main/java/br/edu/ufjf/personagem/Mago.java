@@ -8,17 +8,18 @@ import com.mycompany.jogodetabuleiro.Posicao;
  */
 public class Mago extends Personagem{
     public Posicao posicao = new Posicao();
-    public Mago(){
-        super(10, 7, 3,"Mago");
+    public Mago(String nome){
+        super(10, 7, 3,"Mago", nome);
 
     }
     
+    @Override
     public boolean ativarPoderEspecial(Personagem inimigo){
         if(getMana() == 100){
             setMana(0);
             inimigo.setVida(getVida());
             this.setVida(inimigo.getVida());
-            System.out.printf("TROCAR VIDA! O Mago ");
+            //System.out.printf("TROCAR VIDA! O Mago %s",getNome());
             return true;
         }
         else{
