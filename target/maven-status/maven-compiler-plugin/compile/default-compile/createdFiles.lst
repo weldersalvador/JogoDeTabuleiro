@@ -1,1 +1,5 @@
-com/mycompany/jogodetabuleiro/Personagem.class
+br\edu\ufjf\personagem\Guerreiro.class
+br\edu\ufjf\personagem\Personagem.class
+com\mycompany\jogodetabuleiro\Posicao.class
+br\edu\ufjf\personagem\Mago.class
+br\edu\ufjf\personagem\Arqueiro.class

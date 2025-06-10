@@ -1,12 +1,16 @@
 package br.edu.ufjf.personagem;
 
+import com.mycompany.jogodetabuleiro.Posicao;
+
 /**
  *
  * @author Welder
  */
 public class Mago extends Personagem{
-    public Mago(String nome){
-        super(nome, "Mago", 7, 10, 3);
+    public Posicao posicao = new Posicao();
+    public Mago(){
+        super(10, 7, 3,"Mago");
+
     }
     
     public boolean ativarPoderEspecial(Personagem inimigo){
@@ -18,7 +22,7 @@ public class Mago extends Personagem{
             return true;
         }
         else{
-            System.out.println("Mana insuficiente! Não é possível ativar a poder especial.");
+            System.out.println("Mana insuficiente! Não é possível ativar o poder especial.");
             return false;
         }
     }

@@ -8,32 +8,26 @@ import com.mycompany.jogodetabuleiro.Posicao;
  */
 
 public abstract class Personagem {
-    private final String nome;
-    private final String classe;
+
+    protected int vida;
+    protected int forcaDeAtaque;
+    protected int forcaDeDefesa;
+    protected int alcanceDeAtaque;
+    protected int mana;
+    protected String classe;
+    protected Posicao posicao = new Posicao();
     
-    private int vida;
-    private int forcaDeAtaque;
-    private int forcaDeDefesa;
-    private int alcanceDeAtaque;
-    private int defesaAtual;
-    private int mana;
-    private Posicao posicao;
-    
-    public Personagem(String nome, String classe, int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque){
-        this.nome = nome;
-        this.classe = classe;
+    Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque,String classe){
         this.vida = 100;
         this.mana = 0;
         this.forcaDeAtaque = forcaDeAtaque;
         this.forcaDeDefesa = forcaDeDefesa;
         this.alcanceDeAtaque = alcanceDeAtaque;
-        this.posicao = new Posicao();
+        this.classe = classe;
+        
     }
     
     //Gets
-    public String getNome(){
-        return this.nome;
-    }
     public String getClasse(){
         return this.classe;
     }
@@ -52,12 +46,11 @@ public abstract class Personagem {
     public int getMana(){
         return this.mana;
     }
-    public int getDefesaAtual(){
-        return this.defesaAtual;
-    }
+
     public Posicao getPosicao(){
         return this.posicao;
-    }
+    } 
+
     //Sets
     public void setVida(int vida){
         this.vida = vida;
@@ -71,16 +64,13 @@ public abstract class Personagem {
     public void setAlcanceDeAtaque(int alcanceDeAtaque){
         this.alcanceDeAtaque = alcanceDeAtaque;
     }
-    public void setDefesaAtual(int defesaAtual){
-        this.defesaAtual = defesaAtual;
-    }
     public void setMana(int mana){
         this.mana = mana;
     }
     public void setPosicao(Posicao posicao){
-        this.posicao = posicao;
+        this.posicao.x = posicao.x;
+        this.posicao.y = posicao.y;
     }
-    
     
     //Auxiliares
     public void receberDano(int dano){
