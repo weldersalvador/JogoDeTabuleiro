@@ -34,6 +34,7 @@ public class Tabuleiro {
         }
     }
     public void andar1(String andar,Posicao posicao1){
+        andar = andar.toUpperCase();
         if("C".equals(andar)){
             if(posicao1.x == 0){
                 System.out.println("Voce esta na borda! Passando turno...");
@@ -47,7 +48,6 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para cima! ");
             }
         }
         if("B".equals(andar)){
@@ -63,7 +63,6 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para baixo! ");
             }
         }
         if("D".equals(andar)){
@@ -79,7 +78,6 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para direita! ");
             }
         }
         if("E".equals(andar)){
@@ -95,12 +93,12 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para esquerda! ");
             }
         }
     }
-    public void andar2(String andar2,Posicao posicao){
-        if("C".equals(andar2)){
+    public void andar2(String andar,Posicao posicao){
+        andar = andar.toUpperCase();
+        if("C".equals(andar)){
             if(posicao.x == 0){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
@@ -113,10 +111,9 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao.x][posicao.y] = "p2";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para cima! ");
             }
         }
-        if("B".equals(andar2)){
+        if("B".equals(andar)){
             if(posicao.x == 9){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
@@ -129,10 +126,9 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao.x][posicao.y] = "p2";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para baixo! ");
             }
         }
-        if("D".equals(andar2)){
+        if("D".equals(andar)){
             if(posicao.x == 9){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
@@ -145,10 +141,9 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao.x][posicao.y] = "p2";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para direita! ");
             }
         }
-        if("E".equals(andar2)){
+        if("E".equals(andar)){
             if(posicao.x == 0){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
@@ -161,7 +156,6 @@ public class Tabuleiro {
                 Tabuleiro2D[posicao.x][posicao.y] = "p2";
                 Imprime();
                 System.out.println("");
-                System.out.println("Voce andou uma casa para esquerda! ");
             }
         }
     }

@@ -80,13 +80,13 @@ public class Menu {
         }
         switch(escolha){
             case 1 -> {
-                personagem = new Mago();
+                personagem = new Mago(nome);
             }
             case 2 -> {
-                personagem = new Guerreiro();
+                personagem = new Guerreiro(nome);
             }
-            default -> {
-                personagem = new Arqueiro();
+            case 3 -> {
+                personagem = new Arqueiro(nome);
             }
         }
         return personagem;

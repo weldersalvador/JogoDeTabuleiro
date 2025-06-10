@@ -16,6 +16,7 @@ import java.util.Random;
  *
  * @author Wemerson
  */
+
 public class Bot {
     Random numeroAleatorio = new Random();
     public int escolhaDePersonagem;
@@ -23,20 +24,16 @@ public class Bot {
         escolhaDePersonagem = 1 + numeroAleatorio.nextInt(3);
         switch(escolhaDePersonagem){
             case 1 -> {
-                    personagem = new Mago();
-                    System.out.println("Voce esta jogando contra um mago!");
+                    personagem = new Mago("bot");
                 }
             case 2 -> {
-                   personagem = new Guerreiro();
-                   System.out.println("Voce esta jogando contra um guerreiro!");
+                   personagem = new Guerreiro("bot");
             }
             default -> {
-                System.out.println("Voce esta jogando contra um arqueiro!");
-                personagem = new Arqueiro();
+                personagem = new Arqueiro("bot");
             }
         }           
     }
-    
     protected Personagem personagem;
     public int atacar(){
         return personagem.getForcaDeAtaque();

@@ -15,14 +15,7 @@ public class Arqueiro extends Personagem{
     
     @Override
     public boolean ativarPoderEspecial(Personagem inimigo){
-        if(getMana() == 100){
-            setMana(0);
-            setMana(getMana()+1);
-            return true;
-        }
-        else{
-            System.out.println("Mana insuficiente! Não é possível ativar a poder especial.");
-            return false;
-        }
+        setAlcanceDeAtaque(getAlcanceDeAtaque() + 1);
+        return true;
     }
 }
