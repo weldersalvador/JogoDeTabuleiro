@@ -19,11 +19,6 @@ public final class Play {
     private final String nomeDoPersonagem;
     private String nomeDoPersonagem2;
     private Tabuleiro mesa;
-
-    private enum Status {
-        CONTINUE, LOSE, WIN
-    };
-    Status gameStatus = Status.CONTINUE;
     public int modo;
     Bot bot = new Bot();
 
@@ -41,8 +36,7 @@ public final class Play {
             nomeDoPersonagem2 = escolhaDoPersonagem2.defineNome();
             escolhaDoPersonagem2.imprimeEscolha(nomeDoPersonagem2, player2);
             mesa = new Tabuleiro(player.getPosicao(), player2.getPosicao());
-        }
-        else{
+        } else {
             mesa = new Tabuleiro(player.getPosicao(), bot.personagem.getPosicao());
         }
     }
@@ -65,6 +59,7 @@ public final class Play {
             }
         }
     }
+
     void tomadaDeDecisaoP1(int decisao) {
         if (escolha == 1) {
             int distancia = Math.max(Math.abs(player.getPosicao().x - bot.personagem.getPosicao().x), Math.abs(player.getPosicao().y - bot.personagem.getPosicao().y));
@@ -109,9 +104,14 @@ public final class Play {
                 }
                 case 2 -> {
                     if (distancia <= player.getAlcanceDeAtaque()) {
-                        System.out.println("Voce ataca e causa " + player.getForcaDeAtaque() + " de dano!");
-                        player2.setVida(player2.getVida() - player.getForcaDeAtaque());
-                        System.out.println("O inimigo possui " + player2.getVida() + " de vida.");
+                        System.out.println("O jogador 1 ataca e causa " + player2.getForcaDeAtaque() + " de dano ao jogador 2!");
+                        player2.setVida(player2.getVida() - player.getForcaDeAtaque() + player2.getForcaDeDefesa());
+
+                        if (player2.getForcaDeDefesa() - player.getForcaDeAtaque() < 0) {
+                            player2.setForcaDeDefesa(0);
+                        } else {
+                            player2.setForcaDeDefesa(player2.getForcaDeDefesa() - player.getForcaDeAtaque());
+                        }
                     } else {
                         System.out.println("Distancia insuficiente! Passando turno... ");
                         break;
@@ -125,6 +125,9 @@ public final class Play {
                         player.setForcaDeDefesa(5);
                         System.out.println("Defesa restaurada! ");
                     }
+                }
+                case 4 -> {
+                    player.ativarPoderEspecial(player2);
                 }
             }
         }
@@ -143,11 +146,15 @@ public final class Play {
             }
             case 2 -> {
                 if (distancia <= player2.getAlcanceDeAtaque()) {
-                    System.out.println("Voce ataca e causa " + player2.getForcaDeAtaque() + " de dano!");
-                    player.setVida(player.getVida() - player2.getForcaDeAtaque());
-                    System.out.println("O inimigo possui " + player.getVida() + " de vida.");
+                    System.out.println("O jogador 1 ataca e causa " + player2.getForcaDeAtaque() + " de dano ao jogador 2!");
+                    player.setVida(player.getVida() - player2.getForcaDeAtaque() + player.getForcaDeDefesa());
+                    if (player.getForcaDeDefesa() - player2.getForcaDeAtaque() < 0) {
+                        player.setForcaDeDefesa(0);
+                    } else {
+                        player.setForcaDeDefesa(player.getForcaDeDefesa() - player2.getForcaDeAtaque());
+                    }
                 } else {
-                    System.out.println("Distancia insuficiente! Passando turno... ");
+                    System.out.println("Distancia insuficiente! Passando turno...");
                     break;
                 }
 
@@ -160,7 +167,16 @@ public final class Play {
                     System.out.println("Defesa restaurada! ");
                 }
             }
+            case 4 -> {
+                player2.ativarPoderEspecial(player);
+            }
         }
+    }
+
+    static void imprimeJogador(Personagem jogador) {
+        System.out.println("Vida: " + jogador.getVida());
+        System.out.println("Defesa: " + jogador.getForcaDeDefesa());
+        System.out.println("Alcance: " + jogador.getAlcanceDeAtaque());
     }
 
     void tomadaDeDecisaoBot() {
@@ -173,7 +189,7 @@ public final class Play {
             System.out.println("O inimigo ataca e causa " + bot.atacar() + " de dano! ");
         }
     }
-    
+
     public void iniciaGame() {
         if (modo == 1) {
             Scanner inputP1 = new Scanner(System.in);
@@ -182,6 +198,11 @@ public final class Play {
             while (player.getVida() > 0 && bot.personagem.getVida() > 0) {
                 System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
                 decisao = inputP1.nextInt();
+                while (decisao != 1 && decisao != 2 && decisao != 3 && decisao != 4) {
+                    System.out.println("Comando invalido, por favor digite novamente: ");
+                    System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
+                    decisao = inputP1.nextInt();
+                }
                 tomadaDeDecisaoP1(decisao);
                 tomadaDeDecisaoBot();
             }
@@ -194,22 +215,30 @@ public final class Play {
             while (player.getVida() > 0 && player2.getVida() > 0) {
                 System.out.println("");
                 System.out.println("Vez do jogador 1: ");
+                imprimeJogador(player);
                 System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
                 decisao1 = inputP1.nextInt();
                 while (decisao1 != 1 && decisao1 != 2 && decisao1 != 3 && decisao1 != 4) {
                     System.out.println("Comando invalido, por favor digite novamente: ");
                     System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
+                    decisao1 = inputP1.nextInt();
                 }
                 tomadaDeDecisaoP1(decisao1);
                 System.out.println("");
                 System.out.println("Vez do jogador 2: ");
+                imprimeJogador(player2);
                 System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
                 decisao2 = inputP2.nextInt();
                 while (decisao2 != 1 && decisao2 != 2 && decisao2 != 3 && decisao2 != 4) {
                     System.out.println("Comando invalido, por favor digite novamente: ");
                     System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
                 }
-                tomadaDeDecisaoP2(decisao2);
+                if(player2.getVida() > 0){
+                    tomadaDeDecisaoP2(decisao2);
+                }
+                else{
+                    break;
+                }
             }
 
         }
