@@ -228,19 +228,22 @@ public final class Play {
                 System.out.println("Vez do jogador 2: ");
                 imprimeJogador(player2);
                 System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
-                decisao2 = inputP2.nextInt();
-                while (decisao2 != 1 && decisao2 != 2 && decisao2 != 3 && decisao2 != 4) {
+                if(player2.getVida() > 0){
+                    decisao2 = inputP2.nextInt();
+                    while (decisao2 != 1 && decisao2 != 2 && decisao2 != 3 && decisao2 != 4) {
                     System.out.println("Comando invalido, por favor digite novamente: ");
                     System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
+                    decisao2 = inputP2.nextInt();
                 }
-                if(player2.getVida() > 0){
-                    tomadaDeDecisaoP2(decisao2);
                 }
                 else{
                     break;
                 }
+                while (decisao2 != 1 && decisao2 != 2 && decisao2 != 3 && decisao2 != 4) {
+                    System.out.println("Comando invalido, por favor digite novamente: ");
+                    System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
+                }
             }
-
         }
     }
 }

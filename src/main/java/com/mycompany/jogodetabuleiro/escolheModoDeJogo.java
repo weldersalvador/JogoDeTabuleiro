@@ -19,6 +19,11 @@ public class escolheModoDeJogo {
         System.out.println("2 - PVE");
         
         escolha = input.nextInt();
+        while(escolha != 0 && escolha != 1){
+            System.out.println("Opcao invalida! Por favor escolha novamente: ");
+            System.out.println("1 - PVP");
+            System.out.println("2 - PVE");
+        }
         if(escolha == 0){
             System.out.println("O modo de jogo escolhido foi PVP! ");
             return 0;
@@ -28,10 +33,7 @@ public class escolheModoDeJogo {
                 System.out.println("O modo de jogo escolhido foi PVE! ");
                 return 1;
             }
-            else{
-                System.out.println("Escolha inválida! ");
-                return -1;
-            }
         }
+        return 1;
     }
 }
