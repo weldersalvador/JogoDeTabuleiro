@@ -15,4 +15,7 @@ public class Posicao {
         this.x = numeroAleatorio.nextInt(10);
         this.y = numeroAleatorio.nextInt(10);
     }
+    
+    
+    
 }

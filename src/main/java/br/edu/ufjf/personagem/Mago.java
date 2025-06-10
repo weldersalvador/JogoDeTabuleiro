@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.ufjf.personagem;
 
 /**
@@ -9,15 +5,16 @@ package br.edu.ufjf.personagem;
  * @author Welder
  */
 public class Mago extends Personagem{
-    public Mago(){
-        super(7, 10, 3);
+    public Mago(String nome){
+        super(nome, "Mago", 7, 10, 3);
     }
     
     public boolean ativarPoderEspecial(Personagem inimigo){
-        if(mana == 100){
+        if(getMana() == 100){
             setMana(0);
-            inimigo.setVida(this.vida);
+            inimigo.setVida(getVida());
             this.setVida(inimigo.getVida());
+            System.out.printf("TROCAR VIDA! O Mago ");
             return true;
         }
         else{

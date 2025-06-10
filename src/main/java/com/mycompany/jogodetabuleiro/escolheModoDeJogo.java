@@ -14,7 +14,10 @@ public class escolheModoDeJogo {
     private int escolha;
     public int escolheModo(){
         Scanner input = new Scanner(System.in);
-        System.out.println("Deseja jogar PVP (0) ou PVE? (1)");
+        System.out.println("Deseja jogar qual modo de jogo:");
+        System.out.println("1 - PVP");
+        System.out.println("2 - PVE");
+        
         escolha = input.nextInt();
         if(escolha == 0){
             System.out.println("O modo de jogo escolhido foi PVP! ");

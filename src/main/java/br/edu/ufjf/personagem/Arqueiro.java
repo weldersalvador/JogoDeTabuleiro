@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.ufjf.personagem;
 
 /**
@@ -9,14 +5,14 @@ package br.edu.ufjf.personagem;
  * @author Wemerson
  */
 public class Arqueiro extends Personagem{    
-    public Arqueiro(){        
-        super(5,8,5);
+    public Arqueiro(String nome){        
+        super(nome, "Arqueiro", 5,8,5);
     }
     
     public boolean ativarPoderEspecial(){
-        if(mana == 100){
+        if(getMana() == 100){
             setMana(0);
-            this.alcanceDeAtaque++;
+            setMana(getMana()+1);
             return true;
         }
         else{
