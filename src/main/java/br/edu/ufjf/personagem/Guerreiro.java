@@ -8,9 +8,8 @@ import com.mycompany.jogodetabuleiro.Posicao;
  */
 
 public class Guerreiro extends Personagem {
-    public Posicao posicao = new Posicao();    
     public Guerreiro(String nome){
-        super(15, 10, 1,"Guerreiro", nome);
+        super(15, 10, 1);
     }
 
     @Override

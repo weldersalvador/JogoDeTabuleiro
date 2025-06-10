@@ -9,7 +9,7 @@ import com.mycompany.jogodetabuleiro.Posicao;
 public class Arqueiro extends Personagem{
     
     public Arqueiro(String nome){        
-        super(8,5,5,"Arqueiro", nome);
+        super(8,5,5);
         
     }
     

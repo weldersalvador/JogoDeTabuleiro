@@ -8,8 +8,6 @@ import com.mycompany.jogodetabuleiro.Posicao;
  */
 
 public abstract class Personagem {
-    private final String nome;
-    private final String classe;
     private int vida;
     private int forcaDeAtaque;
     private int forcaDeDefesa;
@@ -17,9 +15,7 @@ public abstract class Personagem {
     private int mana;
     private Posicao posicao;
     
-    public Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque, String classe, String nome){
-        this.nome = nome;
-        this.classe = classe;
+    public Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque){
         this.vida = 100;
         this.mana = 0;
         this.forcaDeAtaque = forcaDeAtaque;
@@ -29,12 +25,6 @@ public abstract class Personagem {
     }
     
     //Gets
-    public String getNome(){
-        return this.nome;
-    }
-    public String getClasse(){
-        return this.classe;
-    }
     public int getVida(){
         return this.vida;
     }

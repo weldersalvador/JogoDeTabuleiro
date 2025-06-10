@@ -36,7 +36,7 @@ public class Bot {
             }
         }           
     }
-    int defesa = 10;//(??) Por que 10?
+    
     protected Personagem personagem;
     public int atacar(){
         return personagem.getForcaDeAtaque();

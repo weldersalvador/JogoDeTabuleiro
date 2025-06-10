@@ -14,8 +14,8 @@ import java.util.Scanner;
 public final class Play {
 
     escolhePersonagens escolhaDoPersonagem1;
-    private final Personagem player;
-    private Personagem player2;
+    private final Jogador player1;
+    private final Jogador player2;
     private final String nomeDoPersonagem;
     private String nomeDoPersonagem2;
     private Tabuleiro mesa;

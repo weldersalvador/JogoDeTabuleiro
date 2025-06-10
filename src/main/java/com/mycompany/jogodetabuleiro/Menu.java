@@ -10,14 +10,69 @@ import br.edu.ufjf.personagem.Mago;
 import br.edu.ufjf.personagem.Personagem;
 import java.util.Scanner;
 
-public class escolhePersonagens {
-    private int escolha;
-    public String nome;
-    protected Personagem personagem;
-    public Personagem escolhaDoPersonagem(){
+/**
+ *
+ * @author assuncao-v
+ */
+public class Menu {
+    
+    public static int escolheModo(){
+        int escolha;
         Scanner input = new Scanner(System.in);
-        System.out.println("Escolha o personagem a ser jogado: ");
-        System.out.println("Mago(1), Guerreiro(2), Arqueiro(3)");
+        System.out.println("Deseja jogar qual modo de jogo:");
+        System.out.println("1 - PVP");
+        System.out.println("2 - PVE");
+        
+        escolha = input.nextInt();
+        switch(escolha){
+            case 0 ->{
+                System.out.println("O modo de jogo escolhido foi PVP! ");
+                return 0;
+            }
+            case 1 ->{
+                System.out.println("O modo de jogo escolhido foi PVE! ");
+                return 1;
+            }
+            default ->{
+                System.out.println("Escolha inválida! ");
+                return -1;
+            }
+        }
+    private static void imprimeClasses(){
+        String [] infoClasseMago = {"Classe: Mago",
+                "Defesa:",
+                "",
+                "",
+                ""};
+                
+
+        String [] infoClasseGuerreiro = {"Classe: Guerreiro",
+                "Defesa",
+                "",
+                "",
+                ""};
+
+        String [] infoClasseArqueiro = {"Classe: Arqueiro",
+                "Defesa",
+                "",
+                "",
+                ""};
+        for(int i = 0)
+        
+    }
+    public static Jogador escolhaDoPersonagem(){
+        int escolha;
+        String nome;
+        Personagem personagem;
+    
+        Scanner input = new Scanner(System.in);
+        System.out.printf("Qual é o nome de seu personagem?\n R.:  ");
+        nome = input.nextLine();
+                
+        System.out.printf("%s será de qual classe?\n", nome);
+        System.out.printf("Opções:");
+        imprimeClasses();
+        
         escolha = input.nextInt();
         while(escolha != 1 && escolha != 2 && escolha != 3){
             System.out.println("Escolha invalida! Escolha novamente: ");
@@ -30,12 +85,8 @@ public class escolhePersonagens {
             case 2 -> {
                 personagem = new Guerreiro();
             }
-            case 3 -> {
-                personagem = new Arqueiro();
-            }
             default -> {
-                
-                personagem = new Mago();
+                personagem = new Arqueiro();
             }
         }
         return personagem;
