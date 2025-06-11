@@ -78,7 +78,7 @@ public final class Play {
                         System.out.println("Voce causou " + player.getForcaDeAtaque() + " de dano ao " + bot.personagem.getClasse() + " bot!");
 
                         if (bot.personagem.getForcaDeDefesa() - player.getForcaDeAtaque() >= 0) {
-                            bot.personagem.setForcaDeDefesa(bot.personagem.getForcaDeDefesa() - bot.personagem.getForcaDeAtaque());
+                            bot.personagem.setForcaDeDefesa(bot.personagem.getForcaDeDefesa() - player.getForcaDeAtaque());
                         } else {
                             bot.personagem.setVida(bot.personagem.getVida() - (player.getForcaDeAtaque() - bot.personagem.getForcaDeDefesa()));
                             bot.personagem.setForcaDeDefesa(0);
@@ -219,7 +219,7 @@ public final class Play {
                 }
             } else if (contador == 0) {
                 System.out.println("O bot ativou o poder especial! ");
-                bot.ativaPoderBot();
+                bot.ativaPoderBot(player);
                 contador++;
             } else {
                 bot.atacar(player);
