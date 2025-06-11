@@ -47,6 +47,11 @@ public final class Play {
         Scanner input = new Scanner(System.in);
         System.out.println("Deseja jogar PVP (0) ou PVE? (1)");
         escolha = input.nextInt();
+        while (escolha != 1 && escolha != 0) {
+            System.out.println("Escolha invalida! Por favor escolha novamente!");
+            System.out.println("Deseja jogar PVP (0) ou PVE? (1)");
+            escolha = input.nextInt();
+        }
         if (escolha == 0) {
             System.out.println("O modo de jogo escolhido foi PVP! ");
             return 0;
@@ -54,11 +59,10 @@ public final class Play {
             if (escolha == 1) {
                 System.out.println("O modo de jogo escolhido foi PVE! ");
                 return 1;
-            } else {
-                System.out.println("Escolha inválida! ");
-                return -1;
+
             }
         }
+        return 1;
     }
 
     void tomadaDeDecisaoP1(int decisao) {
