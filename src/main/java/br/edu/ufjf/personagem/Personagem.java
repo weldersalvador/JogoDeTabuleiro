@@ -16,7 +16,7 @@ public abstract class Personagem {
     private int alcanceDeAtaque;
     private int mana;
     private Posicao posicao;
-    
+    private int defesaInicial;
     public Personagem(int forcaDeAtaque, int forcaDeDefesa, int alcanceDeAtaque, String classe, String nome){
         this.nome = nome;
         this.classe = classe;
@@ -26,6 +26,7 @@ public abstract class Personagem {
         this.forcaDeDefesa = forcaDeDefesa;
         this.alcanceDeAtaque = alcanceDeAtaque;
         this.posicao = new Posicao();
+        defesaInicial = forcaDeDefesa;
     }
     
     //Gets
@@ -52,7 +53,10 @@ public abstract class Personagem {
     }
     public Posicao getPosicao(){
         return this.posicao;
-    } 
+    }
+    public int getDefesaInicial(){
+        return this.defesaInicial;
+    }
 
     //Sets
     public void setVida(int vida){
@@ -75,11 +79,6 @@ public abstract class Personagem {
         this.posicao.y = posicao.y;
     }
     
-    //Auxiliares
-    public void receberDano(int dano){
-        this.vida -= dano;
-    }
-    
-    public abstract boolean ativarPoderEspecial(Personagem inimigo);
+    public abstract void ativarPoderEspecial(Personagem inimigo);
     
 }

@@ -12,11 +12,11 @@ public class Tabuleiro {
     public Tabuleiro(Posicao posicao1, Posicao posicao2){
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
-                Tabuleiro2D[i][j] = "*";
+                Tabuleiro2D[i][j] = "[]";
             }
         }
-        Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
-        Tabuleiro2D[posicao2.x][posicao2.y] = "p2";
+        Tabuleiro2D[posicao1.x][posicao1.y] = "[p1]";
+        Tabuleiro2D[posicao2.x][posicao2.y] = "[p2]";
         for(int i = 0; i < 10; i++){
             System.out.println("");
             for(int j = 0; j < 10; j++){
@@ -43,9 +43,9 @@ public class Tabuleiro {
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao1.x][posicao1.y] = "*";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[]";
                 posicao1.x = posicao1.x - 1;
-                Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[p1]";
                 Imprime();
                 System.out.println("");
             }
@@ -58,9 +58,9 @@ public class Tabuleiro {
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao1.x][posicao1.y] = "*";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[]";
                 posicao1.x = posicao1.x + 1;
-                Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[p1]";
                 Imprime();
                 System.out.println("");
             }
@@ -69,13 +69,13 @@ public class Tabuleiro {
             if(posicao1.x == 9){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
-            else if(Tabuleiro2D[posicao1.x][posicao1.y + 1] == "p2"){
+            else if(Tabuleiro2D[posicao1.x][posicao1.y + 1] == "[p1]"){
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao1.x][posicao1.y] = "*";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[]";
                 posicao1.y = posicao1.y + 1;
-                Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[p1]";
                 Imprime();
                 System.out.println("");
             }
@@ -84,13 +84,13 @@ public class Tabuleiro {
             if(posicao1.x == 0){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
-            else if(Tabuleiro2D[posicao1.x][posicao1.y - 1] == "p2"){
+            else if(Tabuleiro2D[posicao1.x][posicao1.y - 1] == "[p2]"){
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao1.x][posicao1.y] = "*";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[]";
                 posicao1.y = posicao1.y - 1;
-                Tabuleiro2D[posicao1.x][posicao1.y] = "p1";
+                Tabuleiro2D[posicao1.x][posicao1.y] = "[p1]";
                 Imprime();
                 System.out.println("");
             }
@@ -102,13 +102,13 @@ public class Tabuleiro {
             if(posicao.x == 0){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
-            else if(Tabuleiro2D[posicao.x - 1][posicao.y] == "p1"){
+            else if(Tabuleiro2D[posicao.x - 1][posicao.y] == "[p1]"){
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                Tabuleiro2D[posicao.x][posicao.y] = "[]";
                 posicao.x = posicao.x - 1;
-                Tabuleiro2D[posicao.x][posicao.y] = "p2";
+                Tabuleiro2D[posicao.x][posicao.y] = "[p2]";
                 Imprime();
                 System.out.println("");
             }
@@ -117,13 +117,13 @@ public class Tabuleiro {
             if(posicao.x == 9){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
-            else if(Tabuleiro2D[posicao.x + 1][posicao.y] == "p1"){
+            else if(Tabuleiro2D[posicao.x + 1][posicao.y] == "[p1]"){
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                Tabuleiro2D[posicao.x][posicao.y] = "[]";
                 posicao.x = posicao.x + 1;
-                Tabuleiro2D[posicao.x][posicao.y] = "p2";
+                Tabuleiro2D[posicao.x][posicao.y] = "[p2]";
                 Imprime();
                 System.out.println("");
             }
@@ -132,13 +132,13 @@ public class Tabuleiro {
             if(posicao.x == 9){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
-            else if(Tabuleiro2D[posicao.x][posicao.y + 1] == "p1"){
+            else if(Tabuleiro2D[posicao.x][posicao.y + 1] == "[p1]"){
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                Tabuleiro2D[posicao.x][posicao.y] = "[]";
                 posicao.y = posicao.y + 1;
-                Tabuleiro2D[posicao.x][posicao.y] = "p2";
+                Tabuleiro2D[posicao.x][posicao.y] = "[p2]";
                 Imprime();
                 System.out.println("");
             }
@@ -147,13 +147,13 @@ public class Tabuleiro {
             if(posicao.x == 0){
                 System.out.println("Voce esta na borda! Passando turno...");
             }
-            else if(Tabuleiro2D[posicao.x][posicao.y - 1] == "p1"){
+            else if(Tabuleiro2D[posicao.x][posicao.y - 1] == "[p1]"){
                 System.out.println("Comando invalido! Passando turno...");
             }
             else{
-                Tabuleiro2D[posicao.x][posicao.y] = "*";
+                Tabuleiro2D[posicao.x][posicao.y] = "[]";
                 posicao.y = posicao.y - 1;
-                Tabuleiro2D[posicao.x][posicao.y] = "p2";
+                Tabuleiro2D[posicao.x][posicao.y] = "[p2]";
                 Imprime();
                 System.out.println("");
             }

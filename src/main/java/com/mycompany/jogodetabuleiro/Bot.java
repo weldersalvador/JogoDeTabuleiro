@@ -5,7 +5,6 @@
 package com.mycompany.jogodetabuleiro;
 
 //import java.util.Random;
-
 import br.edu.ufjf.personagem.Arqueiro;
 import br.edu.ufjf.personagem.Mago;
 import br.edu.ufjf.personagem.Guerreiro;
@@ -16,26 +15,53 @@ import java.util.Random;
  *
  * @author Wemerson
  */
-
 public class Bot {
+
     Random numeroAleatorio = new Random();
     public int escolhaDePersonagem;
-    public Bot(){
+    protected Personagem personagem;
+    public Bot() {
         escolhaDePersonagem = 1 + numeroAleatorio.nextInt(3);
-        switch(escolhaDePersonagem){
+        switch (escolhaDePersonagem) {
             case 1 -> {
-                    personagem = new Mago("bot");
-                }
+                personagem = new Mago("bot");
+            }
             case 2 -> {
-                   personagem = new Guerreiro("bot");
+                personagem = new Guerreiro("bot");
             }
             default -> {
                 personagem = new Arqueiro("bot");
             }
-        }           
+        }
     }
-    protected Personagem personagem;
-    public int atacar(){
-        return personagem.getForcaDeAtaque();
+    
+
+    public void atacar(Personagem jogador) {
+        if (jogador.getForcaDeDefesa() - personagem.getForcaDeAtaque() >= 0) {
+            jogador.setForcaDeDefesa(jogador.getForcaDeDefesa() - personagem.getForcaDeAtaque());
+        } else {
+            jogador.setVida(jogador.getVida() - (personagem.getForcaDeAtaque() - jogador.getForcaDeDefesa()));
+            jogador.setForcaDeDefesa(0);
+        }
+    }
+    public void andarBot(Personagem jogador,Tabuleiro mesa){
+        if(jogador.getPosicao().x - personagem.getPosicao().x > 0){
+            mesa.andar2("B",personagem.getPosicao());
+        }
+        else if(jogador.getPosicao().x - personagem.getPosicao().x < 0){
+            mesa.andar2("C",personagem.getPosicao());
+        }
+        else if(jogador.getPosicao().y - personagem.getPosicao().y < 0){
+            mesa.andar2("E",personagem.getPosicao());
+        }
+        else if(jogador.getPosicao().y - personagem.getPosicao().y > 0){
+            mesa.andar2("D",personagem.getPosicao());
+        }
+    }
+    public void defendeBot(){
+        personagem.setForcaDeDefesa(personagem.getDefesaInicial());
+    }
+    public void ativaPoderBot(){
+        personagem.ativarPoderEspecial(personagem);
     }
 }

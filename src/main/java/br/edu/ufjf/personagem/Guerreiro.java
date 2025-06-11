@@ -9,16 +9,21 @@ import com.mycompany.jogodetabuleiro.Posicao;
 public class Guerreiro extends Personagem {
 
     public Posicao posicao = new Posicao();
-
     public Guerreiro(String nome) {
         super(15, 10, 1, "Guerreiro", nome);
     }
 
     @Override
-    public boolean ativarPoderEspecial(Personagem inimigo) {
+    public void ativarPoderEspecial(Personagem inimigo) {
         setMana(0);
-        setForcaDeAtaque(getForcaDeAtaque() * 2);
-        return true;
+        if(getForcaDeAtaque() == 15){
+            System.out.println("Poder especial ativado! A forca do guerreiro foi dobrada! ");
+            setForcaDeAtaque(getForcaDeAtaque() * 2);
+        }
+        else{
+            System.out.println("Poder especial ja foi usado! Passando turno...");
+        }
+            
     }
 
 }
