@@ -1,10 +1,6 @@
 package com.mycompany.jogodetabuleiro;
 
-import br.edu.ufjf.personagem.Arqueiro;
-import br.edu.ufjf.personagem.Guerreiro;
-import br.edu.ufjf.personagem.Mago;
 import br.edu.ufjf.personagem.Personagem;
-import com.mycompany.jogodetabuleiro.Tabuleiro;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -152,7 +148,7 @@ public final class Play {
 
     }
 
-    void tomadaDeDecisaoP2(int decisao) {
+    boolean tomadaDeDecisaoP2(int decisao) {
         int distancia = Math.max(Math.abs(player.getPosicao().x - player2.getPosicao().x), Math.abs(player.getPosicao().y - player2.getPosicao().y));
         switch (decisao) {
             case 1 -> {
@@ -174,9 +170,7 @@ public final class Play {
                     }
                 } else {
                     System.out.println("Distancia insuficiente! Passando turno...");
-                    break;
                 }
-
             }
             case 3 -> {
                 if (player2.getForcaDeDefesa() == player2.getDefesaInicial()) {
@@ -189,7 +183,11 @@ public final class Play {
             case 4 -> {
                 player2.ativarPoderEspecial(player);
             }
+            case 5 ->{
+                return false;
+            }
         }
+        return true;
     }
 
     static void imprimeJogador(Personagem jogador) {
@@ -290,17 +288,21 @@ public final class Play {
                     System.out.println("");
                     System.out.println("Vez do jogador 2: ");
                     imprimeJogador(player2);
-                    System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
+                    System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial), 5(Parar de jogar)");
 
                     decisao2 = inputP2.nextInt();
-                    while (decisao2 != 1 && decisao2 != 2 && decisao2 != 3 && decisao2 != 4) {
+                    while (decisao2 != 1 && decisao2 != 2 && decisao2 != 3 && decisao2 != 4 && decisao2 != 5) {
                         System.out.println("Comando invalido, por favor digite novamente: ");
-                        System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial)");
+                        System.out.println("Escolha o que fazer: 1 (Andar), 2(Atacar), 3 (Defender) , 4 (Ataque especial), 5(Parar de jogar)");
                         decisao2 = inputP2.nextInt();
                     }
-                    tomadaDeDecisaoP2(decisao2);
-                    if (decisao2 != 1) {
+                    boolean continuaJogo = tomadaDeDecisaoP2(decisao2);
+                    if (decisao2 != 1 && continuaJogo) {
                         mesa.Imprime();
+                    }
+                    else{
+                        System.out.println("Jogo finalizado");
+                        return;
                     }
                 } else {
                     System.out.println("");
@@ -309,7 +311,6 @@ public final class Play {
                 }
             }
             System.out.println("Parabens!! O jogador 2 vence a partida!");
-            return;
         }
     }
 }

@@ -14,6 +14,10 @@ public class escolhePersonagens {
     private int escolha;
     public String nome;
     protected Personagem personagem;
+    /* escolhaDoPersonagem
+     * Descrição: Realiza a rotina para definir o jogador que regerá os comportamentos dos personagens. 
+     *
+     */
     public Personagem escolhaDoPersonagem(){
         Scanner input = new Scanner(System.in);
         System.out.println("Escolha o personagem a ser jogado: ");

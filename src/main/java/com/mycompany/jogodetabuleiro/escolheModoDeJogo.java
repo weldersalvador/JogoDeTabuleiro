@@ -12,6 +12,10 @@ import java.util.Scanner;
  */
 public class escolheModoDeJogo {
     private int escolha;
+    /* escolheModo
+     * Descrição: Realiza a rotina para definir o modo de jogo que regerá os comportamentos dos personagens. 
+     * @return int tipoDoJogo
+     */
     public int escolheModo(){
         Scanner input = new Scanner(System.in);
         System.out.println("Deseja jogar qual modo de jogo:");

@@ -3,10 +3,11 @@ package com.mycompany.jogodetabuleiro;
 import java.util.Random;
 
 /**
- *
+ * 
  * @author Vitor
  */
 public class Posicao {
+    
     public int x, y;
     
     public Posicao(){
