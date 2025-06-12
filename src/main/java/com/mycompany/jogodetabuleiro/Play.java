@@ -183,7 +183,7 @@ public final class Play {
             case 4 -> {
                 player2.ativarPoderEspecial(player);
             }
-            case 5 ->{
+            case 5 -> {
                 return false;
             }
         }
@@ -202,27 +202,28 @@ public final class Play {
         int contador = 0;
         int distancia = Math.max(Math.abs(player.getPosicao().x - bot.personagem.getPosicao().x), Math.abs(player.getPosicao().y - bot.personagem.getPosicao().y));
         if (bot.personagem.getAlcanceDeAtaque() >= distancia && bot.personagem.getVida() >= 50) {
-            if (escolha.nextInt(0, 71) <= 70) {
+            bot.atacar(player);
+            System.out.println("");
+            System.out.println("O " + bot.personagem.getClasse() + " bot te ataca e causa " + bot.personagem.getForcaDeAtaque() + " de dano!");
+        } else if (bot.personagem.getAlcanceDeAtaque() >= distancia && bot.personagem.getVida() < 50) {
+            if (bot.personagem.getForcaDeDefesa() != bot.personagem.getDefesaInicial()) {
+                if (1 + escolha.nextInt(0, 100) <= 50) {
+                    bot.defendeBot();
+                    System.out.println("O bot restaurou sua defesa!");
+                } else if (contador == 0) {
+                    System.out.println("");
+                    System.out.println("O bot ativou o poder especial! ");
+                    bot.ativaPoderBot(player);
+                    contador++;
+                } else {
+                    bot.atacar(player);
+                    System.out.println("");
+                    System.out.println("O " + bot.personagem.getClasse() + " bot te ataca e causa " + bot.personagem.getForcaDeAtaque() + " de dano!");
+                }
+            } else {
                 bot.atacar(player);
                 System.out.println("");
                 System.out.println("O " + bot.personagem.getClasse() + " bot te ataca e causa " + bot.personagem.getForcaDeAtaque() + " de dano!");
-            } else {
-                System.out.println("");
-                bot.andarBot(player, mesa);
-                System.out.println("O " + bot.personagem.getClasse() + " avanca em sua direcao!");
-            }
-        } else if (bot.personagem.getAlcanceDeAtaque() <= distancia && bot.personagem.getVida() < 50) {
-            if (bot.personagem.getForcaDeDefesa() != bot.personagem.getDefesaInicial()) {
-                if (escolha.nextInt(0, 71) <= 60) {
-                    bot.defendeBot();
-                    System.out.println("O bot restaurou sua defesa!");
-                }
-            } else if (contador == 0) {
-                System.out.println("O bot ativou o poder especial! ");
-                bot.ativaPoderBot(player);
-                contador++;
-            } else {
-                bot.atacar(player);
             }
         } else {
             bot.andarBot(player, mesa);
@@ -243,7 +244,7 @@ public final class Play {
                 System.out.println("");
                 System.out.println("Seus status: ");
                 imprimeJogador(player);
-                System.out.println("Escolha o que fazer: 1 (Andar), 2 (Atacar), 3 (Defender) , 4 (Ataque especial)");
+                System.out.println("Escolha o que fazer: 1 (Andar), 2 (Atacar), 3 (Defender) , 4 (Ataque especial) ");
                 decisao = inputP1.nextInt();
                 while (decisao != 1 && decisao != 2 && decisao != 3 && decisao != 4) {
                     System.out.println("Comando invalido, por favor digite novamente: ");
@@ -299,8 +300,7 @@ public final class Play {
                     boolean continuaJogo = tomadaDeDecisaoP2(decisao2);
                     if (decisao2 != 1 && continuaJogo) {
                         mesa.Imprime();
-                    }
-                    else{
+                    } else {
                         System.out.println("Jogo finalizado");
                         return;
                     }

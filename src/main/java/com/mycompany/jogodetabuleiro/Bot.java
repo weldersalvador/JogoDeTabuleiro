@@ -45,16 +45,16 @@ public class Bot {
         }
     }
     public void andarBot(Personagem jogador,Tabuleiro mesa){
-        if(jogador.getPosicao().x - personagem.getPosicao().x > 0 && jogador.getPosicao().x - personagem.getPosicao().x != 0){
+        if(jogador.getPosicao().x - personagem.getPosicao().x > 0){
             mesa.andar2("B",personagem.getPosicao());
         }
-        else if(jogador.getPosicao().x - personagem.getPosicao().x < 0 && Math.abs(jogador.getPosicao().x - personagem.getPosicao().x) != 0){
+        else if(jogador.getPosicao().x - personagem.getPosicao().x < 0){
             mesa.andar2("C",personagem.getPosicao());
         }
-        else if(jogador.getPosicao().y - personagem.getPosicao().y < 0 && Math.abs(jogador.getPosicao().y - personagem.getPosicao().y) != 0){
+        else if(jogador.getPosicao().y - personagem.getPosicao().y < 0){
             mesa.andar2("E",personagem.getPosicao());
         }
-        else if(jogador.getPosicao().y - personagem.getPosicao().y > 0 && Math.abs(jogador.getPosicao().y - personagem.getPosicao().y) != 0){
+        else if(jogador.getPosicao().y - personagem.getPosicao().y > 0){
             mesa.andar2("D",personagem.getPosicao());
         }
     }
